@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f0f5f3;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+input:focus {
+  outline: none;
+  border-color: #2b6777 !important;
+  box-shadow: 0 0 0 3px rgba(43, 103, 119, 0.12);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #b0c4bc;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8aa89e;
+}
+
+/* Tab scrollbar on mobile */
+nav::-webkit-scrollbar {
+  height: 3px;
+}
+
+@media print {
+  header, nav, footer {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+}
