@@ -5,6 +5,7 @@ import { colors, fonts } from "../theme.js";
 export function Card({ title, icon, subtitle, children }) {
   return (
     <div
+      className="card"
       style={{
         background: colors.card,
         borderRadius: 14,
