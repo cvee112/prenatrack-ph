@@ -294,7 +294,7 @@ export default function App() {
             </Card>
 
             <Card title="Comorbidities & Risk Factors" icon="⚕️">
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(200px, 100%), 1fr))", gap: 0 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
                 {COMORBIDITIES.map((c) => (
                   <label key={c.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 0", fontSize: 13.5, cursor: "pointer", fontFamily: fonts.body }}>
                     <input type="checkbox" checked={selectedComo.includes(c.id)} onChange={() => toggleComo(c.id)} style={{ accentColor: colors.primary }} />
