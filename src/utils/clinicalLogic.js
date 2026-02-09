@@ -22,7 +22,7 @@ export function getScreenings(aogWeeks, comorbidities, age, gravidity) {
     tests: [
       "Complete Blood Count (CBC)",
       "Blood typing (ABO + Rh)",
-      "Urinalysis with microscopy",
+      "Urinalysis with microscopy + urine culture (screen for asymptomatic bacteriuria per POGS/WHO)",
       "Hepatitis B surface antigen (HBsAg)",
       "Syphilis screening (RPR/VDRL)",
       "HIV screening (with consent per RA 11166)",
@@ -60,13 +60,18 @@ export function getScreenings(aogWeeks, comorbidities, age, gravidity) {
       tests.push("Offer quadruple screen / maternal serum screening");
       tests.push("Offer amniocentesis for karyotyping if indicated");
     }
-    if (aogWeeks >= 24 && aogWeeks <= 28) {
-      tests.push("75g OGTT for GDM screening (universal per POGS/IADPSG)");
-      tests.push("Repeat CBC (assess for anemia)");
-      tests.push("Repeat urinalysis");
-      if (como.has("rh_neg")) tests.push("Indirect Coombs test / antibody screen");
-    }
-    s.push({ category: "Second Trimester Screening", timing: "14–28 weeks", tests });
+    s.push({ category: "Second Trimester Screening", timing: "14–27 weeks", tests });
+  }
+
+  // 24–28 week screening (straddles 2nd/3rd trimester boundary)
+  if (aogWeeks >= 24 && aogWeeks <= 28) {
+    const tests = [
+      "75g OGTT for GDM screening — universal per POGS/IADPSG (diagnostic cutoffs: fasting ≥92, 1hr ≥180, 2hr ≥153 mg/dL)",
+      "Repeat CBC (assess for anemia)",
+      "Repeat urinalysis",
+    ];
+    if (como.has("rh_neg")) tests.push("Indirect Coombs test / antibody screen");
+    s.push({ category: "24–28 Week Screening", timing: "24–28 weeks", tests });
   }
 
   // Early GDM screening for high-risk
@@ -218,6 +223,16 @@ export function getSupplements(aogWeeks, comorbidities) {
         "May be included in prenatal vitamins. Important for fetal neurodevelopment. Iodized salt alone may be insufficient.",
     },
   ];
+
+  if (aogWeeks > 13) {
+    supps.push({
+      name: "Albendazole (Deworming)",
+      dose: "400 mg single oral dose",
+      timing: "Once after the 1st trimester (DOH Prenatal Care Package)",
+      notes:
+        "DOH-mandated for all pregnant women. Reduces risk of iron-deficiency anemia from soil-transmitted helminthiasis. Single dose only — do not repeat during pregnancy.",
+    });
+  }
 
   if (
     como.has("prev_preeclampsia") ||
