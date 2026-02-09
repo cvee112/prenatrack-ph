@@ -218,7 +218,7 @@ export default function App() {
       <main style={{ maxWidth: 1300, margin: "0 auto", padding: "24px 20px 60px" }}>
         {/* INPUT TAB */}
         {tab === "input" && (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(340px, 100%), 1fr))", gap: 20 }}>
             <Card title="Patient Demographics" icon="👤">
               <FormRow label="Date of Birth">
                 <input type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} style={inputStyle()} />
@@ -234,10 +234,10 @@ export default function App() {
                 <input type="date" value={utzDate} onChange={(e) => setUtzDate(e.target.value)} style={inputStyle()} />
               </FormRow>
               <FormRow label="AOG at UTZ">
-                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                  <input type="number" min="0" max="42" value={utzWeeks} onChange={(e) => setUtzWeeks(e.target.value)} placeholder="Wks" style={{ ...inputStyle(), width: 70 }} />
+                <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                  <input type="number" min="0" max="42" value={utzWeeks} onChange={(e) => setUtzWeeks(e.target.value)} placeholder="Wks" style={{ ...inputStyle(), width: 70, minWidth: 60 }} />
                   <span style={{ fontFamily: fonts.body, fontSize: 13, color: colors.textLight }}>weeks</span>
-                  <input type="number" min="0" max="6" value={utzDays} onChange={(e) => setUtzDays(e.target.value)} placeholder="Days" style={{ ...inputStyle(), width: 70 }} />
+                  <input type="number" min="0" max="6" value={utzDays} onChange={(e) => setUtzDays(e.target.value)} placeholder="Days" style={{ ...inputStyle(), width: 70, minWidth: 60 }} />
                   <span style={{ fontFamily: fonts.body, fontSize: 13, color: colors.textLight }}>days</span>
                 </div>
               </FormRow>
@@ -294,7 +294,7 @@ export default function App() {
             </Card>
 
             <Card title="Comorbidities & Risk Factors" icon="⚕️">
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(200px, 100%), 1fr))", gap: 0 }}>
                 {COMORBIDITIES.map((c) => (
                   <label key={c.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 0", fontSize: 13.5, cursor: "pointer", fontFamily: fonts.body }}>
                     <input type="checkbox" checked={selectedComo.includes(c.id)} onChange={() => toggleComo(c.id)} style={{ accentColor: colors.primary }} />
@@ -308,7 +308,7 @@ export default function App() {
 
         {/* SUMMARY TAB */}
         {tab === "summary" && (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(340px, 100%), 1fr))", gap: 20 }}>
             <Card title="Pregnancy Summary" icon="📊">
               <SummaryRow label="Age" value={age !== null ? `${age} years` : "—"} />
               <SummaryRow label="OB Score" value={gravidity ? `G${gravidity}P${parity || 0} (${term || 0}-${preterm || 0}-${abortion || 0}-${living || 0})` : "—"} />
@@ -365,7 +365,7 @@ export default function App() {
                 </p>
               </Card>
             ) : (
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))", gap: 20 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(380px, 100%), 1fr))", gap: 20 }}>
                 {screenings.map((s, i) => (
                   <Card key={i} title={s.category} icon="🔬" subtitle={s.timing}>
                     {s.tests.map((t, j) => (
@@ -383,7 +383,7 @@ export default function App() {
 
         {/* SUPPLEMENTS TAB */}
         {tab === "supplements" && (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(380px, 100%), 1fr))", gap: 20 }}>
             {supplements.length === 0 ? (
               <Card title="Prenatal Supplements" icon="💊">
                 <p style={{ fontFamily: fonts.body, fontSize: 14, color: colors.textLight, fontStyle: "italic" }}>
@@ -412,7 +412,7 @@ export default function App() {
 
         {/* HISTORY GUIDE TAB */}
         {tab === "history" && (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(340px, 100%), 1fr))", gap: 20 }}>
             {[
               { title: "Obstetric History", items: OB_HISTORY_CHECKLIST, prefix: "ob" },
               { title: "Medical / Surgical History", items: MEDICAL_HISTORY_CHECKLIST, prefix: "med" },
@@ -436,7 +436,7 @@ export default function App() {
 
         {/* PE CHECKLIST TAB */}
         {tab === "pe" && (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(340px, 100%), 1fr))", gap: 20 }}>
             {PE_CHECKLIST.map((section, si) => (
               <Card key={si} title={section.category} icon="🩺" subtitle={`${section.items.filter((_, i) => peChecked[`pe_${si}_${i}`]).length}/${section.items.length} done`}>
                 {section.items.map((item, i) => (
@@ -525,7 +525,7 @@ export default function App() {
 
         {/* VACCINES TAB */}
         {tab === "vaccines" && (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(380px, 100%), 1fr))", gap: 20 }}>
             {VACCINES.map((v, i) => {
               const relevant = !bestAOG
                 ? true
