@@ -58,18 +58,43 @@ nav::-webkit-scrollbar {
 
 /* Mobile adjustments */
 @media (max-width: 480px) {
+  /* Header */
   header {
-    padding: 16px 14px !important;
+    padding: 14px 12px !important;
   }
   header h1 {
-    font-size: 22px !important;
+    font-size: 20px !important;
   }
+  header p {
+    font-size: 11px !important;
+  }
+
+  /* Tab bar — compact on mobile */
+  nav button {
+    padding: 10px 8px !important;
+    font-size: 12px !important;
+  }
+
+  /* Main content area */
   main {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
+    padding: 14px 8px 40px !important;
   }
+
+  /* Grid gaps */
+  main > div {
+    gap: 12px !important;
+  }
+
+  /* Cards — tighter padding */
+  .card {
+    padding: 14px 12px !important;
+    border-radius: 10px !important;
+  }
+
+  /* Footer */
   footer {
-    padding: 14px 14px !important;
+    padding: 12px 12px !important;
+    font-size: 11px !important;
   }
 }
 
