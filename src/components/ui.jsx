@@ -51,7 +51,7 @@ export function Card({ title, icon, subtitle, children }) {
 
 export function FormRow({ label, children }) {
   return (
-    <div style={{ marginBottom: 12 }}>
+    <div style={{ marginBottom: 12, overflow: "hidden" }}>
       <label
         style={{
           display: "block",
