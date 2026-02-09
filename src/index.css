@@ -22,6 +22,20 @@ body {
 
 input, select, textarea {
   max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Cards — prevent children from overflowing */
+.card {
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* Date inputs on iOS can exceed container due to native chrome */
+input[type="date"] {
+  width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
