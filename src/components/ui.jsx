@@ -154,6 +154,7 @@ export function inputStyle() {
     border: `1px solid ${colors.border}`,
     fontFamily: fonts.body,
     fontSize: 14,
+    display: "block",
     width: "100%",
     boxSizing: "border-box",
     outline: "none",
