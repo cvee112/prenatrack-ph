@@ -29,6 +29,12 @@ input, select, textarea {
   min-width: 0;
 }
 
+/* iOS Safari date inputs have native appearance that fights width:100% */
+input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
