@@ -215,7 +215,7 @@ export default function App() {
       </nav>
 
       {/* ── Main content ───────────────────────────────────── */}
-      <main style={{ maxWidth: 1300, margin: "0 auto", padding: "24px 20px 60px" }}>
+      <main style={{ maxWidth: 1300, margin: "0 auto", padding: "24px 20px 60px", overflowX: "hidden" }}>
         {/* INPUT TAB */}
         {tab === "input" && (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(340px, 100%), 1fr))", gap: 20 }}>
