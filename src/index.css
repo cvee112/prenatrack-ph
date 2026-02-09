@@ -70,9 +70,8 @@ nav::-webkit-scrollbar {
   height: 3px;
 }
 
-/* Mobile adjustments */
+/* Mobile: edge-to-edge card layout like native apps */
 @media (max-width: 480px) {
-  /* Header */
   header {
     padding: 14px 12px !important;
   }
@@ -83,31 +82,30 @@ nav::-webkit-scrollbar {
     font-size: 11px !important;
   }
 
-  /* Tab bar — compact on mobile */
   nav button {
     padding: 10px 8px !important;
     font-size: 12px !important;
   }
 
-  /* Main content area */
+  /* Remove main side padding — cards handle their own spacing */
   main {
-    padding: 14px 8px 40px !important;
+    padding: 8px 0 40px !important;
   }
 
-  /* Grid gaps */
   main > div {
-    gap: 12px !important;
+    gap: 8px !important;
   }
 
-  /* Cards — tighter padding */
+  /* Cards go edge-to-edge */
   .card {
-    padding: 14px 12px !important;
-    border-radius: 10px !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    padding: 16px !important;
   }
 
-  /* Footer */
   footer {
-    padding: 12px 12px !important;
+    padding: 12px 14px !important;
     font-size: 11px !important;
   }
 }
