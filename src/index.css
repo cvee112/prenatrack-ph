@@ -24,19 +24,9 @@ input, select, textarea {
   box-sizing: border-box;
 }
 
-/* Card layout containment */
+/* Card layout containment for CSS grid children */
 .card {
-  overflow: hidden;
   min-width: 0;
-  word-break: break-word;
-}
-
-/* All inputs within cards fill available width by default.
-   Inline width overrides (e.g. width:70 on small number inputs) still win. */
-.card input {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -71,7 +61,7 @@ nav::-webkit-scrollbar {
   height: 3px;
 }
 
-/* Mobile: edge-to-edge card layout like native apps */
+/* Mobile: tighter spacing on small screens */
 @media (max-width: 480px) {
   header {
     padding: 14px 12px !important;
@@ -88,21 +78,8 @@ nav::-webkit-scrollbar {
     font-size: 12px !important;
   }
 
-  /* Remove main side padding — cards handle their own spacing */
   main {
-    padding: 8px 0 40px !important;
-  }
-
-  main > div {
-    gap: 8px !important;
-  }
-
-  /* Cards go edge-to-edge */
-  .card {
-    border-radius: 0 !important;
-    border-left: none !important;
-    border-right: none !important;
-    padding: 16px !important;
+    padding: 16px 10px 40px !important;
   }
 
   footer {

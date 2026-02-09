@@ -51,7 +51,7 @@ export function Card({ title, icon, subtitle, children }) {
 
 export function FormRow({ label, children }) {
   return (
-    <div style={{ marginBottom: 12, overflow: "hidden" }}>
+    <div style={{ marginBottom: 12 }}>
       <label
         style={{
           display: "block",
@@ -154,7 +154,8 @@ export function inputStyle() {
     border: `1px solid ${colors.border}`,
     fontFamily: fonts.body,
     fontSize: 14,
-    display: "block",
+    width: "100%",
+    boxSizing: "border-box",
     outline: "none",
     transition: "border-color 0.2s",
     color: colors.text,
